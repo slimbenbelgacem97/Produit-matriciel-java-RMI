@@ -1,0 +1,19 @@
+
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+
+
+
+/**
+ *
+ * @author boulbaba
+ */
+public interface Matrice_Interface extends Remote {
+
+
+    
+   abstract public ArrayList<int[][]> bloc_mat()throws RemoteException;
+   abstract public int[][] produit_mat() throws RemoteException;
+}

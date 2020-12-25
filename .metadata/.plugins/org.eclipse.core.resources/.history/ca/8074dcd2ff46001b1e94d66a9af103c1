@@ -1,0 +1,109 @@
+import java.io.DataInputStream;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+
+public class Batata {
+
+	public static void main(String[] args) {
+		DataInputStream saisie = new DataInputStream(System.in);
+	    	int  produit[][],  mat1[][], mat2[][], lig, col;
+		try {
+			
+	    	
+	    	System.out.println("Saisie de la matrice 1: ");
+	        System.out.print("Nombre de ligne:");
+	        Integer nombre = new Integer(saisie.readLine());
+	        lig = nombre.intValue();
+
+	        System.out.print("Nombre de colonne:");
+	        nombre = new Integer(saisie.readLine());
+	        col = nombre.intValue();
+	        mat1 = new int[lig][col];
+	        mat1 = lire_matrice(lig,col);
+		} catch (Exception e) {
+			e.getStackTrace();
+		}
+		Matrice_Interface mat =  fab.newMatrice();
+		 for (int i = 0; i <5; i++) {
+         	affiche_matrice(mat.bloc_mat(mat1).get(i));
+         	
+			}
+	}
+	public static int[][] lire_matrice(int l, int c) throws Exception{
+	DataInputStream saisie = new DataInputStream(System.in);
+
+	int t[][], i, j ;
+
+	t = new int [l][c] ;
+
+	for (i = 0 ; i < t.length ; i = i + 1 )
+	   for (j = 0 ; j < t[0].length ; j = j + 1 ) 
+		{
+	        System.out.print(" [" + (i+1) + "," + (j+1) + "]:") ;
+	        String chaine = saisie.readLine();
+	        Integer nombre = new Integer(chaine);
+	        t[i][j] = nombre.intValue(); 
+	        }
+	          
+	return t ;
+	}
+	
+	public static void affiche_matrice (int t[][])
+	{
+	int i, j;
+	int space;
+	String s;
+
+	System.out.println();
+	for (i = 0 ; i < t.length ; i = i + 1 )
+	   { 
+	   for (j = 0 ; j < t[0].length ; j = j + 1 ) 
+
+		{
+	        s = Integer.toString(t[i][j]);
+	        if(j == 0)
+	          System.out.print(" | ") ;
+	        System.out.print(t[i][j]+ " ") ;
+	        for(space = s.length(); space < 7; space++)
+	             System.out.print(" ");
+	        }
+	   System.out.print(" | ") ;
+	   System.out.println();
+	   }
+	   
+	}        
+	
+public ArrayList<int[][]> bloc_mat(int[][] mat ) throws RemoteException {
+    	
+    	ArrayList<int[][]> blocs = new ArrayList<>();
+        int lignes = mat.length;
+        int cols = mat[0].length;
+        int[][] submat1 = null;
+        for(int i=0;i<lignes/2;i++){
+            for(int j=0;j<cols/2;j++)
+                submat1[i][j]= mat[i][j];
+        }
+       
+        blocs.add(submat1);
+        int[][] submat2 = null;
+        for(int i=0;i<lignes/2;i++){
+            for(int j=cols/2;j<=cols;j++)
+                submat2[i][j]= mat[i][j];
+        }
+        blocs.add(submat2);
+        int[][] submat3 = null;
+        for(int i=lignes/2;i<=lignes;i++){
+            for(int j=0;j<cols/2;j++)
+                submat3[i][j]= mat[i][j];
+        }
+        blocs.add(submat3);
+        int[][] submat4 = null;
+        for(int i=lignes/2;i<=lignes;i++){
+            for(int j=cols/2;j<=cols;j++)
+                submat4[i][j]= mat[i][j];
+        }
+        blocs.add(submat4);
+        
+    	return blocs;
+	}
+}

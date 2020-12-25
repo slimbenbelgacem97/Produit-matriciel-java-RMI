@@ -1,0 +1,22 @@
+Calcul de matrices a distance rmi java--------------------------------------
+Url     : http://codes-sources.commentcamarche.net/source/37900-calcul-de-matrices-a-distance-rmi-javaAuteur  : cs_Abdellah81Date    : 07/08/2013
+Licence :
+=========
+
+Ce document intitulé « Calcul de matrices a distance rmi java » issu de CommentCaMarche
+(codes-sources.commentcamarche.net) est mis à disposition sous les termes de
+la licence Creative Commons. Vous pouvez copier, modifier des copies de cette
+source, dans les conditions fixées par la licence, tant que cette note
+apparaît clairement.
+
+Description :
+=============
+
+C'est simple, le client va envoy&eacute; deux matrices au serveur pour effectuer
+ leurs produit et leurs somme mais en &eacute;vitant d'avoir plus de 4 clients d
+ans le serveur en meme temps.
+<br /><a name='conclusion'></a><h2> Conclusion : 
+</h2>
+<br />Ce programme permet d'effectuer la somme et le produit de deux mat
+rices en parallele et a distance avec une contrainte: pas plus de 4 client en me
+me temp dans le serveur.

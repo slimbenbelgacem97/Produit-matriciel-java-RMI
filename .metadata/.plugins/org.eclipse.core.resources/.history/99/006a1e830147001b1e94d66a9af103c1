@@ -1,0 +1,82 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+
+/**
+ *
+ * @author boulbaba
+ */
+public class ProduitMatrice extends UnicastRemoteObject implements Matrice_Interface {
+
+	
+    
+    public ProduitMatrice() throws RemoteException {
+		super();
+		
+	}
+
+	@Override
+    public ArrayList<int[][]> bloc_mat(int[][] mat ) throws RemoteException {
+    	
+    	ArrayList<int[][]> blocs = new ArrayList<>();
+    	
+        int lignes = 2;mat.length;
+        int cols = 2;//mat[0].length;
+        System.out.println();
+        int[][] submat1 =new int [lignes/2][cols/2];
+        for(int i=0;i<lignes/2;i++){
+            for(int j=0;j<cols/2;j++) {
+            	System.out.println(j);
+                submat1[i][j]= mat[i][j];
+                }
+        }
+       
+        blocs.add(submat1);
+        int[][] submat2 = new int [lignes][cols];
+        for(int i=0;i<lignes/2;i++){
+            for(int j=cols/2;j<=cols;j++)
+                submat2[i][j]= mat[i][j];
+        }
+        blocs.add(submat2);
+        int[][] submat3 = new int [lignes][cols];
+        for(int i=lignes/2;i<=lignes;i++){
+            for(int j=0;j<cols/2;j++)
+                submat3[i][j]= mat[i][j];
+        }
+        blocs.add(submat3);
+        int[][] submat4 = new int [lignes][cols];
+        for(int i=lignes/2;i<=lignes;i++){
+            for(int j=cols/2;j<=cols;j++)
+                submat4[i][j]= mat[i][j];
+        }
+        blocs.add(submat4);
+        
+    	return blocs;
+    }
+    
+ 
+    @Override
+    public int[][] produitMat(int[][] mat1, int[][] mat2) throws RemoteException {
+    	int[][] C = new int[2][2]; 
+    	for(int i=0;i<2;i++){
+            for(int j=0;j<2;j++)
+                C[i][j]+=(mat1[i][j] * mat2[j][i]);
+        }
+        return C;
+    }
+
+	
+    
+    
+    // ma partie===================================
+  //  public  Matrice produit
+    
+}
