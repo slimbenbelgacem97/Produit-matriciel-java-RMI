@@ -1,3 +1,0 @@
-INDEX VERSION 1.131+F:\IF4\POO\.metadata\.plugins\org.eclipse.jdt.core
-1393164717.index
-1305934110.index
